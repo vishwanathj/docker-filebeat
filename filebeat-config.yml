@@ -19,6 +19,11 @@ data:
       multiline.pattern: '^\s'
       multiline.match: after
       document_type: kube-logs
+      processors:
+        - rename:
+            fields:
+              - from: "log"
+              - to: "message"
 
     output.logstash:
         hosts: ["${LOGSTASH_HOSTS}"]
